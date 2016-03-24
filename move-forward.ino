@@ -9,10 +9,10 @@ Servo servoR;  // creates servo object to control a servo
 
 // Servo Tuning
 // These values are just starting points. Every servo is a little different and so you may need to fine tune each.
-// Don't forget that depending n how you have your servos mounted, a value can go "forward" on one servo but 
+// Don't forget that depending on how you have your servos mounted, a value can go "forward" on one servo but 
 // "backward" on the other.
-// You may need to tune the forward rev values to go in a straight line or turn.
-// You will probably need to tune the leftServoStop and rightServoStop values to get to a dead stop on each servo
+// You may need to tune the forward rev values to go in a straight line.
+// You will probably need to tune the leftServoStop and rightServoStop values to achieve full stop on each servo
 
 // 0 full speeed one direction - 180 full speed opposite direction - 90 full stop
 const int leftServoForward = 180;   // 135 is Clockwise, full speed (around 90 is stopped)
@@ -37,11 +37,12 @@ void setup() {
 
 
 // ***********************************************************
-// ******* MAIN LOOP *****************************************
+// ********************* MAIN LOOP ***************************
 // ***********************************************************
 // Runs forever...
 void loop() {
-  // put your main code here, to run repeatedly:
+  // put your main code here, to run repeatedly
+
   servoR.write(rightServoForward); // right servo moves forward
   servoL.write(leftServoForward);  // left servo moves forward
   delay(delayTime);                // pause program execution for 3 seconds  
@@ -49,6 +50,7 @@ void loop() {
   servoL.write(leftServoStop);     // stop left servo
   delay(delayTime);                // pause program execution for 3 section
 }
+
 
 
 // move two servos forward forever
@@ -65,12 +67,12 @@ void reverse(){
     servoR.write(rightServoReverse);     // rotate left servo reverse
 }
 
-// // ***********************************************************
-// // ***** stopall() *********************************************
-// // ***********************************************************
+// // **********************************************************
+// // ******************* stopall() ****************************
+// // **********************************************************
 // void stopall(){
 //     // stops
 //     Serial.println("stopall()");
-//     servoR.write(stopR);              // stop
-//     servoL.write(stopL);              // stop
+//     servoR.write(rightServoStop);              // stop
+//     servoL.write(leftServoStops);              // stop
 // }
