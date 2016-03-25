@@ -1,23 +1,18 @@
-// ping_US-100_sensor
-// for Let's Code Blacksburg! www.letscodeblacksburg.org 2015-04-28
-// By Thomas "Tweeks" Tweeks, tweeks-homework(at)theweeks.org
-//
+// ping-sensor.ino
+
 // This ping-sensor code is set up for using a four pin ping sensor such as
 // the US-100 module:
-// https://www.bananarobotics.com/shop/US-100-Ultrasonic-Distance-Sensor-Module
-// http://www.iseerobot.com/produk-1255-us100-ultrasonic-sensor-for-arduino.html
+
 // NOTE: For this code, + the US-100 module, be sure to remove the serial-data jumper on the
 // back so that you get back the raw pulse from the echo pin (and not serial distance data).
-//
-// CAUTION: Have your code checked, and have the TA RUN IT BEFORE hooking up the US-100 ping
-//          sensor! Not doing so could damage the Arduino!
+
 // This is set up to direct connect power and ground for the US-100 ping sensor to be
 // on pins 10(5v) 11(ping) 12(echo) 13(low/gnd) 14(hard ground)
 
 const int powerPin = 10;    // providing power to ping sensor from pin 10
 const int pingPin = 11;     // pin we're sending the trigger/ping on
 const int echoPin = 12;     // pin we're reading back the echo on
-const int gnd1Pin = 13;     // simulated ground so we can safely plug the module into our arduinos
+const int gndPin = 13;     // simulated ground so we can safely plug the module into our arduinos
 //last GND pin goes to "pin 14" on the arduino or sensor shield
 
 long dist = 0;
@@ -30,14 +25,14 @@ void setup() {
   // US-100 PING SENSOR POWER/GND SETUP
   // set up inline, direct connect power and ground for the US-100 ping sensor to be
   // on pins:                       
-  // US-100  \--5v-trg-echo-GND-GND--/
-  //             |   |   |   |   |
-  // Arduino     10  11  12  13  14(hard ground)
-  //    (looking from the outter edge of arduino pin header)
-  pinMode(gnd1Pin, OUTPUT);      // sets up ping module's inner GND pin on a low output, and
-  digitalWrite(gnd1Pin, LOW);     // the outter GND pin to hard GND (on most arduinos)
-  pinMode(powerPin, OUTPUT);
-  digitalWrite(powerPin, HIGH);  // try to power the module from pin
+  // US-100  \--5v---trg---echo---GND/
+                 |    |     |      |  
+                10    11    12     13
+  //pinMode(gndPin, OUTPUT);      // sets up ping module's inner GND pin on a low output, and
+  //digitalWrite(gndPin, LOW);     // the outter GND pin to hard GND (on most arduinos)
+  //pinMode(powerPin, OUTPUT);
+  //digitalWrite(powerPin, HIGH);  // try to power the module from pin
+
   // ** US-100 PING SENSOR I/O PINS
   pinMode(pingPin, OUTPUT);
   digitalWrite(pingPin, LOW);
@@ -50,19 +45,19 @@ void setup() {
 
 
 // ***********************************************************
-// ******* MAIN LOOP *****************************************
+// ********************** MAIN LOOP **************************
 // ***********************************************************
 // Runs forever...
 void loop() {
 
-  dist = getdist();              // looks wit hping sensor to measure distance to any objects
+  dist = getdist();              // looks with ping sensor to measure distance to any objects
   Serial.print("Distance = ");
   Serial.println(dist);
-  delay(100);
+  delay(500);
 }
 
 // ***********************************************************
-// ***** getdist() *******************************************
+// **************** getdist() ********************************
 // ***********************************************************
 long getdist()
 {
