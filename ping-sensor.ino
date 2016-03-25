@@ -13,7 +13,7 @@ const int powerPin = 10;    // providing power to ping sensor from pin 10
 const int pingPin = 11;     // pin we're sending the trigger/ping on
 const int echoPin = 12;     // pin we're reading back the echo on
 const int gndPin = 13;     // simulated ground so we can safely plug the module into our arduinos
-//last GND pin goes to "pin 14" on the arduino or sensor shield
+
 
 long dist = 0;
   
@@ -26,8 +26,9 @@ void setup() {
   // set up inline, direct connect power and ground for the US-100 ping sensor to be
   // on pins:                       
   // US-100  \--5v---trg---echo---GND/
-                 |    |     |      |  
-                10    11    12     13
+  //             |    |     |      |  
+  //            10    11    12     13
+
   //pinMode(gndPin, OUTPUT);      // sets up ping module's inner GND pin on a low output, and
   //digitalWrite(gndPin, LOW);     // the outter GND pin to hard GND (on most arduinos)
   //pinMode(powerPin, OUTPUT);
