@@ -15,7 +15,7 @@ const int echoPin = 12;     // pin we're reading back the echo on
 const int gndPin = 13;     // simulated ground so we can safely plug the module into our arduinos
 
 
-long dist = 0;
+// long dist = 0;
   
 // ***********************************************************
 // ******* SETUP BLOCK ***************************************
@@ -29,10 +29,10 @@ void setup() {
   //             |    |     |      |  
   //            10    11    12     13
 
-  //pinMode(gndPin, OUTPUT);      // sets up ping module's inner GND pin on a low output, and
-  //digitalWrite(gndPin, LOW);     // the outter GND pin to hard GND (on most arduinos)
-  //pinMode(powerPin, OUTPUT);
-  //digitalWrite(powerPin, HIGH);  // try to power the module from pin
+  pinMode(gndPin, OUTPUT);      // sets up ping module's inner GND pin on a low output, and
+  digitalWrite(gndPin, LOW);     // the outter GND pin to hard GND (on most arduinos)
+  pinMode(powerPin, OUTPUT);
+  digitalWrite(powerPin, HIGH);  // try to power the module from pin
 
   // ** US-100 PING SENSOR I/O PINS
   pinMode(pingPin, OUTPUT);
@@ -51,10 +51,10 @@ void setup() {
 // Runs forever...
 void loop() {
 
-  dist = getdist();              // looks with ping sensor to measure distance to any objects
+  long dist = getdist();              // looks with ping sensor to measure distance to any objects
   Serial.print("Distance = ");
   Serial.println(dist);
-  delay(500);
+  delay(100);
 }
 
 // ***********************************************************
@@ -68,6 +68,7 @@ long getdist()
 
   // The PING))) is triggered by a HIGH pulse of 2 or more microseconds.
   // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:
+
   digitalWrite(pingPin, HIGH);      // start the outgoing ping
   delayMicroseconds(10);            // do the ping for 10uS
   digitalWrite(pingPin, LOW);       // stop doing the ping
@@ -81,7 +82,7 @@ long getdist()
   //Serial.print("cm");
   //Serial.println();
 
-  return (inches);
+  return inches;
 }
 
 
@@ -93,7 +94,7 @@ long microsecondsToInches(long microseconds)
   // second).  This gives the distance travelled by the ping, outbound
   // and return, so we divide by 2 to get the distance of the obstacle.
   // See: http://www.parallax.com/dl/docs/prod/acc/28015-PING-v1.3.pdf
-  return microseconds / 74 / 2;
+  return microseconds / 74.0 / 2.0;
 }
 
 long microsecondsToCentimeters(long microseconds)
@@ -101,5 +102,5 @@ long microsecondsToCentimeters(long microseconds)
   // The speed of sound is 340 m/s or 29 microseconds per centimeter.
   // The ping travels out and back, so to find the distance of the
   // object we take half of the distance travelled.
-  return microseconds / 29 / 2;
+  return microseconds / 29.0 / 2.0;
 }
