@@ -54,7 +54,7 @@ void loop() {
   long dist = getdist();              // looks with ping sensor to measure distance to any objects
   Serial.print("Distance = ");
   Serial.println(dist);
-  delay(500);
+  delay(100);
 }
 
 // ***********************************************************
