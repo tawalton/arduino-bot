@@ -18,13 +18,13 @@ Servo servoR;  // creates servo object to control a servo
 const int leftServoForward = 180;   // 135 is Clockwise, full speed (around 90 is stopped)
 const int leftServoReverse = 0;    // 45 is Counter Clockwise, full speed (ardound 90 is stopped)
 
-const int rightServoForward = 180;    // 45 is Counter Clockwise, full speed (ardound 90 is stopped)
-const int rightServoReverse =  0;   // 135 is Clockwise, full speed (around 90 is stopped)
+const int rightServoForward = 0;    // 45 is Counter Clockwise, full speed (ardound 90 is stopped)
+const int rightServoReverse = 180;   // 135 is Clockwise, full speed (around 90 is stopped)
 
 const int leftServoStop = 90;    // 90 is usually "stopped" (you may need to fine tune it for dead stop)
 const int rightServoStop = 90;    // 90 is usually "stopped" (you may need to fine tune it for dead stop)
 
-const int delayTime = 3000 // Delay program execution for 3000 ms or 3 seconds
+const int delayTime = 3000; // Delay program execution for 3000 ms or 3 seconds
 
 
 void setup() {
