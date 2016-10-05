@@ -15,11 +15,11 @@ Servo servoR;  // creates servo object to control a servo
 // You will probably need to tune the leftServoStop and rightServoStop values to achieve full stop on each servo
 
 // 0 full speeed one direction - 180 full speed opposite direction - 90 full stop
-const int leftServoForward = 180;   // 135 is Clockwise, full speed (around 90 is stopped)
-const int leftServoReverse = 0;    // 45 is Counter Clockwise, full speed (ardound 90 is stopped)
+const int leftServoForward = 0;   // 135 is Clockwise, full speed (around 90 is stopped)
+const int leftServoReverse = 180;    // 45 is Counter Clockwise, full speed (ardound 90 is stopped)
 
-const int rightServoForward = 0;    // 45 is Counter Clockwise, full speed (ardound 90 is stopped)
-const int rightServoReverse = 180;   // 135 is Clockwise, full speed (around 90 is stopped)
+const int rightServoForward = 180;    // 45 is Counter Clockwise, full speed (ardound 90 is stopped)
+const int rightServoReverse = 0;   // 135 is Clockwise, full speed (around 90 is stopped)
 
 const int leftServoStop = 90;    // 90 is usually "stopped" (you may need to fine tune it for dead stop)
 const int rightServoStop = 90;    // 90 is usually "stopped" (you may need to fine tune it for dead stop)
